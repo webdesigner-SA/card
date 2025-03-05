@@ -17,7 +17,7 @@
     <br>
     <canvas id="greetingCard" width="500" height="300"></canvas>
     <br>
-    <button id="downloadButton" onclick="downloadImage()">تحميل الصورة</button>
+    <button id="downloadButton" onclick="downloadImage()" disabled>تحميل الصورة</button>
 
     <script>
         function generateCard() {
@@ -42,6 +42,9 @@
 
                 // Draw the new text
                 ctx.fillText(name, canvas.width / 2, 150);
+
+                // Enable the download button after the card is generated
+                document.getElementById("downloadButton").disabled = false;
             };
         }
 
@@ -49,10 +52,11 @@
             let canvas = document.getElementById("greetingCard");
             let link = document.createElement("a");
             link.download = "تهنئة.png";
-            link.href = canvas.toDataURL("image/png"); // Make sure to specify the image format
+            link.href = canvas.toDataURL("image/png"); // Ensure it's in PNG format
             link.click();
         }
     </script>
 </body>
 </html>
+
 
