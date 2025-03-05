@@ -17,42 +17,42 @@
     <br>
     <canvas id="greetingCard" width="500" height="300"></canvas>
     <br>
-    <button onclick="downloadImage()">تحميل الصورة</button>
+    <button id="downloadButton" onclick="downloadImage()">تحميل الصورة</button>
 
     <script>
-       function generateCard() {
-    let name = document.getElementById("nameInput").value;
-    let canvas = document.getElementById("greetingCard");
-    let ctx = canvas.getContext("2d");
+        function generateCard() {
+            let name = document.getElementById("nameInput").value;
+            let canvas = document.getElementById("greetingCard");
+            let ctx = canvas.getContext("2d");
 
-    let img = new Image();
-    img.src = "https://raw.githubusercontent.com/webdesigner-SA/card/main/greeting.jpg"; // Replace with your actual image link
+            let img = new Image();
+            img.src = "https://raw.githubusercontent.com/webdesigner-SA/card/main/greeting.jpg"; // Replace with your actual image link
 
-    img.onload = function() {
-        // Clear the canvas before drawing a new image
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+            img.onload = function() {
+                // Clear the canvas before drawing a new image
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw the background image
-        ctx.drawImage(img, 0, 0, 500, 300);
+                // Draw the background image
+                ctx.drawImage(img, 0, 0, 500, 300);
 
-        // Set text properties
-        ctx.font = "24px Arial";
-        ctx.fillStyle = "red";
-        ctx.textAlign = "center";
+                // Set text properties
+                ctx.font = "24px Arial";
+                ctx.fillStyle = "red";
+                ctx.textAlign = "center";
 
-        // Draw the new text
-        ctx.fillText(name, canvas.width / 2, 150);
-    };
-}
-
+                // Draw the new text
+                ctx.fillText(name, canvas.width / 2, 150);
+            };
+        }
 
         function downloadImage() {
             let canvas = document.getElementById("greetingCard");
             let link = document.createElement("a");
             link.download = "تهنئة.png";
-            link.href = canvas.toDataURL();
+            link.href = canvas.toDataURL("image/png"); // Make sure to specify the image format
             link.click();
         }
     </script>
 </body>
 </html>
+
